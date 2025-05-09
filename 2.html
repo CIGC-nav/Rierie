@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cal+Sans&family=Parisienne&family=Playball&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Poem Flashcard Deck</title>
+  <style>
+    body {
+      font-family: cal sans;
+      background: #faf8f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .deck-container {
+      position: relative;
+      width: 80vh;
+      height: 80vh;
+    }
+
+    .card {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #fffdf8;
+      border: 2px solid #d4cfc4;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+      transition: transform 0.5s ease, opacity 0.5s ease;
+      cursor: pointer;
+      backface-visibility: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+
+    .card-content {
+      text-align: center;
+      color: #444;
+    }
+
+    .card-title {
+      font-weight: bold;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-body {
+      font-size: 1rem;
+      white-space: pre-line;
+      text-align: left;
+      padding: 15px;
+    }
+
+    .card:nth-child(1) { z-index: 3; }
+    .card:nth-child(2) { z-index: 2; transform: scale(0.97) translateY(4px); }
+    .card:nth-child(3) { z-index: 1; transform: scale(0.94) translateY(8px); }
+
+    .shuffle-out {
+      transform: translateX(400px) rotate(10deg);
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="deck-container" id="deckContainer">
+  <!-- Cards will be injected here dynamically -->
+</div>
+
+<script>
+  const poems = [
+    {
+      title: "Vivid",
+      body: "In this life\nSo Livid\nAll I wish is for you\nTo live your life vivid\nLive happily,\nTogether in this life\nWith me,\nFind peace\n In this world so wicked"
+    },
+    {
+      title: "Dew",
+      body: "In everything you do\nEvery word you spew\nEvery momrnt your through\nNo matter how sour\nOr bitter the moment\nEven in a messy\nUnordered present\nYou remain as the dew\nThe unfading sweetness\nEmbeded in every piece of you."
+    },
+    {
+      title: "Space",
+      body: "Just like you\nYour lips shimmer, glow\nAnd shine like the moonlight\nForming a smile\nEver so bright\nOutshining even starlights\nAnd I, always here,\nAlways hoping, seeking\n Searching, dreaming\n Of your sight."
+    },
+    {
+      title: "Dairy",
+      body: "Your voice,\nSmooth like dairy,\nYour glimmer,\nBrighter than that of a fairy\nYour light\nBrighter than those of inifinite Galaxies\nUnwavering, fluttering\nBreathtaking, stunning \nThat is you,\n Your very being"
+    }
+    
+  ];
+
+  let currentIndex = 0;
+  const container = document.getElementById('deckContainer');
+
+  function createCard(poem) {
+    const card = document.createElement('div');
+    card.className = 'card';
+
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'card-content';
+
+    const title = document.createElement('div');
+    title.className = 'card-title';
+    title.textContent = poem.title;
+
+    const body = document.createElement('div');
+    body.className = 'card-body';
+    body.textContent = poem.body;
+
+    contentDiv.appendChild(title);
+    contentDiv.appendChild(body);
+    card.appendChild(contentDiv);
+    return card;
+  }
+
+  function renderDeck() {
+    container.innerHTML = '';
+
+    for (let i = 0; i < 3; i++) {
+      let index = (currentIndex + i) % poems.length;
+      const card = createCard(poems[index]);
+      container.appendChild(card);
+    }
+
+    const topCard = container.querySelector('.card:nth-child(1)');
+    topCard.addEventListener('click', () => shuffleCard(topCard));
+  }
+
+  function shuffleCard(card) {
+    card.classList.add('shuffle-out');
+    card.removeEventListener('click', shuffleCard);
+
+    setTimeout(() => {
+      currentIndex = (currentIndex + 1) % poems.length;
+      renderDeck();
+    }, 500);
+  }
+
+  renderDeck();
+</script>
+
+</body>
+</html>

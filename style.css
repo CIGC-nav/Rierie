@@ -1,0 +1,16 @@
+@media only screen and (max-width: 600px){
+    body{
+        background-color: #f9ece3;
+        border-radius: 25%;
+        
+    }
+    h1{
+        font-family: cal sans;
+        letter-spacing: 1vh;
+        font-size: 8vh;
+        text-align: justify;
+        padding: 15vh;
+        display: block;
+        width: 4vh;
+    }
+}
