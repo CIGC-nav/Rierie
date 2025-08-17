@@ -1,5 +1,6 @@
 
-body{background-image: url(blurry-gradient-haikei.svg);     
+body{background-image: url(blurry-gradient-haikei.svg); 
+    background-size: cover;   
 }
 .daisy-container {
     
