@@ -1,0 +1,183 @@
+
+body{background-image: url(blurry-gradient-haikei.svg); 
+    background-size: 1000vh;   
+    /*cooment*/
+}
+.daisy-container {
+    
+    margin-top: 100vw;
+  position: relative;
+  width: 150px; 
+  height: 150px;
+    margin: 50px auto;
+    animation: yee 2s linear ;
+    animation-duration: 8s; 
+}
+@keyframes yee{
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+.center{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+a{
+    font-family: cal sans;
+    letter-spacing: .3vh;
+    margin: 2vh;
+}
+.animated-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 36px;
+  border: 4px solid;
+  border-color: transparent;
+  font-size: 16px;
+  background-color: inherit;
+  border-radius: 100px;
+  font-weight: 600;
+  color: black;
+  box-shadow: 0 0 0 2px black;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button svg {
+  position: absolute;
+  width: 24px;
+  fill: black;
+  z-index: 9;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .arr-1 {
+  right: 16px;
+}
+
+.animated-button .arr-2 {
+  left: -25%;
+}
+
+.animated-button .circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: #f9c0af;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .text {
+  position: relative;
+  z-index: 1;
+  transform: translateX(-12px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button:hover {
+  box-shadow: 0 0 0 12px transparent;
+  color: #212121;
+  border-radius: 12px;
+}
+
+.animated-button:hover .arr-1 {
+  right: -25%;
+}
+
+.animated-button:hover .arr-2 {
+  left: 16px;
+}
+
+.animated-button:hover .text {
+  transform: translateX(12px);
+}
+
+.animated-button:hover svg {
+  fill: #212121;
+}
+
+.animated-button:active {
+  scale: 0.95;
+  box-shadow: 0 0 0 4px #000000;
+}
+
+.animated-button:hover .circle {
+  width: 220px;
+  height: 220px;
+  opacity: 1;
+}
+a{
+    text-decoration: none;
+    color: white;
+    font-family: roboto;
+    font-size: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+    animation: hover-anim;
+    animation-duration: 8s;
+}
+a:hover{
+    color: #FFD700;
+    animation: hover-anim;
+}
+@keyframes hover-anim{
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.daisy-center {
+  width: 50px;
+  height: 50px;
+  background-color: #FFD700; /* Yellow for the center */
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 30%);
+  z-index: 2; /* Ensure center is on top of petals */
+}
+
+.daisy-petal {
+  width: 30px; /* Petal width */
+  height: 80px; /* Petal height */
+  background-color: #FFFFFF; /* White for petals */
+  border-radius: 50%; /* Rounded petals */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center bottom; /* Rotate around the bottom center */
+  transform: translate(-50%, -50%) rotate(0deg); /* Initial position */
+  z-index: 1; /* Petals behind the center */
+}
+
+/* Rotate each petal to form a circle */
+.petal-1 { transform: translate(-50%, -50%) rotate(0deg); }
+.petal-2 { transform: translate(-50%, -50%) rotate(45deg); }
+.petal-3 { transform: translate(-50%, -50%) rotate(90deg); }
+.petal-4 { transform: translate(-50%, -50%) rotate(135deg); }
+.petal-5 { transform: translate(-50%, -50%) rotate(180deg); }
+.petal-6 { transform: translate(-50%, -50%) rotate(225deg); }
+.petal-7 { transform: translate(-50%, -50%) rotate(270deg); }
+.petal-8 { transform: translate(-50%, -50%) rotate(315deg); }
+#letter{
+
+    font-family: special elite ;
+    padding: 30px;
+    text-align: justify;
+    letter-spacing: 1px;
+    font-size: 13px;
+    animation: go-up;
+    animation-duration: 3s;
+}
+@keyframes go-up{
+    0%{transform: translatey(500vh);}
+}
